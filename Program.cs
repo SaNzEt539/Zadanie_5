@@ -6,15 +6,19 @@ namespace consoleTask_5_1
     {
         static void f(double x)
         {
-            double res = Math.Log(x * x * x * x - 1) * Math.Log(1 + x);
-            if ((x * x * x * x - 1) < 0 || (1 + x) < 0) 
+            if ((3*x) < 0)
             {
                 throw new Exception("Логарифм отрицательного числа");
             }
-            if ((x * x * x * x - 1) == 0 || (1 + x) == 0)
+            if ((2 * x * x * x * x * x - 1) < 0)
+            {
+                throw new Exception("Квадратный корень из отрицательного числа");
+            }
+            if ((3 * x) == 0)
             {
                 throw new Exception("Логарифм нуля - бесконечность");
             }
+            double res = Math.Log(3 * x) * Math.Sqrt(2 * x * x * x * x * x - 1);            
             Console.WriteLine("f({0}) = {1}", x, res);
         }
         static void Main(string[] args)
@@ -27,20 +31,20 @@ namespace consoleTask_5_1
                 double b = Double.Parse(Console.ReadLine());
                 Console.Write("Введите h: ");
                 double h = Double.Parse(Console.ReadLine());
-                if (h==0 || h<0)
+                if (h == 0 || h < 0)
                 {
                     throw new Exception("h должно быть больше нуля");
                 }
-                for (double x = a; x<=b; x+=h)
+                for (double x = a; x <= b; x += h)
                 {
                     f(x);
                 }
             }
-            catch(System.FormatException)
+            catch (System.FormatException)
             {
                 Console.WriteLine("Введено что-то не то");
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 Console.WriteLine(exc.Message);
             }
